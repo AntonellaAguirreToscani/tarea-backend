@@ -7,17 +7,15 @@ import * as fs from 'fs';
 @Injectable()
 export class VehiculoService {
     private listado : Vehiculo [];
-
-    public constructor(){
-        this.listado = this.loadVehiculos();
-    }
-    private loadVehiculos(): Vehiculo[] {
+    
+    private loadVehiculos(): void {
         let archivo = fs.readFileSync('C:/Users/atoscani/source/repos/tarea-backend/cfp-demo/config/vehiculos.csv', 'utf8');
 
         const elementos: string[][] =
             archivo.split('\n').map(item => item.replace('\r', '')).map(item => item.split(','));
-
-        let listadoVehiculos = [];
+    
+        //Para que se mantenga actualizado el listado, se inicializa acá!!
+        this.listado = [];
         for (let i = 0; i < elementos.length; i++) {
             let vehiculo : Vehiculo;
             switch (elementos[i][5]) {
@@ -31,9 +29,8 @@ export class VehiculoService {
                                              ,parseInt(elementos[i][4]),elementos[i][5]);
                     break;        
             }
-            listadoVehiculos.push(vehiculo);
+            this.listado.push(vehiculo);
         }
-        return listadoVehiculos;
     }
     public mostrarVehiculos(): Vehiculo[]{
         this.loadVehiculos();
