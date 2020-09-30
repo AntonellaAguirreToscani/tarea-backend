@@ -64,4 +64,11 @@ export class VehiculoService {
         });
         return listadoAutos;
     }
+    public getVehiculo(patente: string): Vehiculo {
+        return this.listado.reduce((obj,vehiculo)=>{
+           if (vehiculo.patente == patente)
+                obj = vehiculo;
+                return obj;
+        },<Vehiculo> {}) as Vehiculo;
+    }
 }
