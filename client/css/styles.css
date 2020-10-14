@@ -1,0 +1,15 @@
+#container{
+    background-color: #f5f6fa;
+}
+#form1, #form2, #tabla{
+    margin: 2% 2% 2% 2%;
+}
+h1, h2{
+    margin-top: 3%;
+    margin-left: 3%;
+    color:#7f8fa6;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+#btnAgregar, #btnSalvar{
+    margin-top: 30%;
+}
